@@ -4,14 +4,14 @@ const axios = require('axios');
 /*
 Structure of post request required:
 {
-	'type': 'get / post / put',
+	'type': 'get/post/put',
 	'url': 'some link',
 	'payload': 'json payload'
 }
 */
 
 // Get request return message.
-const message = `Usage: send a post request with json obj: { type: 'get/post', url: 'the api address', payload: 'any payload content to attach' }`;
+const message = `Usage: send a post request with json obj: { type: 'get/post/put', url: 'the api address', payload: 'any payload content to attach' }`;
 
 const handleRequest = (req, res) => {
 	const { type, url, payload } = req.body;

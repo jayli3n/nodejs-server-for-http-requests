@@ -1,13 +1,13 @@
 # nodejs-server-for-http-requests
-Just for avoiding the CORS error :(
+Mainly just for avoiding the CORS error during development :(
 
-Just a quick nodejs server that can make http get / post requests for you so that you can avoid the CORS error during development.
-
-Usage: send a post request with json obj:
-`
+##Usage:
+1. Deploy to your own server.
+2. Send a post request with json obj:
+```
 {
-	type: 'get/post',
+	type: 'get/post/put',
 	url: 'the api address',
-	payload: 'any payload content to attach'
+	payload: 'any payload content to attach in request'
 }
-`;
+```
