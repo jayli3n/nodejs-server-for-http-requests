@@ -15,7 +15,6 @@ const message = `Usage: send a post request with json obj: { type: 'get/post', u
 
 const handleRequest = (req, res) => {
 	const { type, url, payload } = req.body;
-	return (res.json(req.body));
 	if (type === 'get' && url) {
 		return (
 			axios.get(url)
