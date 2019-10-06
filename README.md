@@ -1,7 +1,7 @@
 # nodejs-server-for-http-requests
 Mainly just for avoiding the CORS error during development :(
 
-##Usage:
+## Usage:
 1. Deploy to your own server.
 2. Send a post request with json obj:
 ```
@@ -11,3 +11,5 @@ Mainly just for avoiding the CORS error during development :(
 	payload: 'any payload content to attach in request'
 }
 ```
+
+## MIT
