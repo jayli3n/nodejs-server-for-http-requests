@@ -4,7 +4,7 @@ const axios = require('axios');
 /*
 Structure of post request required:
 {
-	'type': 'get / post',
+	'type': 'get / post / put',
 	'url': 'some link',
 	'payload': 'json payload'
 }
@@ -24,6 +24,12 @@ const handleRequest = (req, res) => {
 	} else if (type === 'post' && url) {
 		return (
 			axios.post(url, payload)
+			.then(response => res.json(response.data))
+			.catch(err => res.status(422).json(err))
+		);
+	} else if (type === 'put' && url) {
+		return (
+			axios.put(url, payload)
 			.then(response => res.json(response.data))
 			.catch(err => res.status(422).json(err))
 		);
