@@ -18,13 +18,13 @@ const handleRequest = (req, res) => {
 	if (type === 'get' && url) {
 		return (
 			axios.get(url)
-			.then(response => res.json(response.data))
+			.then(response => res.json(response))
 			.catch(err => res.status(422).json(err))
 		);
 	} else if (type === 'post' && url) {
 		return (
 			axios.post(url, payload)
-			.then(response => res.json(response.data))
+			.then(response => res.json(response))
 			.catch(err => res.status(422).json(err))
 		);
 	}
