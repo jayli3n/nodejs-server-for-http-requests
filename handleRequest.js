@@ -6,15 +6,16 @@ Structure of post request required:
 {
 	'type': 'get / post',
 	'url': 'some link',
-	'body': 'json body'
+	'payload': 'json payload'
 }
 */
 
 // Get request return message.
-const message = `Usage: send a post request with json obj: { type: 'get/post', url: 'the api address', body: 'any body content to attach' }`;
+const message = `Usage: send a post request with json obj: { type: 'get/post', url: 'the api address', payload: 'any payload content to attach' }`;
 
 const handleRequest = (req, res) => {
-	const { type, url, body } = req.body;
+	const { type, url, payload } = req.body;
+	return (res.json(req.body));
 	if (type === 'get' && url) {
 		return (
 			axios.get(url)
@@ -23,7 +24,7 @@ const handleRequest = (req, res) => {
 		);
 	} else if (type === 'post' && url) {
 		return (
-			axios.post(url, body)
+			axios.post(url, payload)
 			.then(response => res.json(response))
 			.catch(err => res.status(422).json(err))
 		);
