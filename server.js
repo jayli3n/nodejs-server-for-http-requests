@@ -1,37 +1,24 @@
-const axios = require('axios');
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const { handleRequest } = require('./handleRequest');
 
 
-/*
-Structure of post request required:
-{
-	'type': 'get / post',
-	'url': 'some link',
-	'body': 'json body'
-}
-*/
+// Initialize express.
+const app = express();
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+	console.log('Server is running on port: ', PORT);
+});
+app.use(bodyParser.json());
+app.use(cors());
 
-const handleRequest = (req, res) => {
-	const { type, url, body } = req.body;
-	switch (type) {
-		case 'get':
-			return (
-				axios.get(url)
-				.then((response) => res.json(response))
-				.catch((err) => res.status(422).json(err))
-			);
-		case 'post':
-			return (
-				axios.post(url, body)
-				.then((response) => res.json(response))
-				.catch((err) => res.status(422).json(err))
-			);
-		default:
-			return (
-				res.status(422).json('Need to specify type of request to perform. Use "type" key.')
-			);
-	}
-};
+// Get request return message.
+const message = `Usage: send post request with json obj: { type: 'get/post', url: 'the api address', body: 'any body content to attach' }`;
 
-module.exports = {
-	handleRequest: handleRequest
-};
+// Routes.
+app.get('/', (req, res) => res.json(message));
+app.post('/', (req, res) => handleRequest(req, res));
+
+
+
