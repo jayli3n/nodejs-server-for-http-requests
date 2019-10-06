@@ -10,28 +10,27 @@ Structure of post request required:
 }
 */
 
+// Get request return message.
+const message = `Usage: send a post request with json obj: { type: 'get/post', url: 'the api address', body: 'any body content to attach' }`;
+
 const handleRequest = (req, res) => {
 	const { type, url, body } = req.body;
-	switch (type) {
-		case 'get':
-			return (
-				axios.get(url)
-				.then((response) => res.json(response))
-				.catch((err) => res.status(422).json(err))
-			);
-		case 'post':
-			return (
-				axios.post(url, body)
-				.then((response) => res.json(response))
-				.catch((err) => res.status(422).json(err))
-			);
-		default:
-			return (
-				res.status(422).json('Need to specify type of request to perform. Use "type" key.')
-			);
+	if (type === 'get' && url) {
+		return (
+			axios.get(url)
+			.then((response) => res.json(response))
+			.catch((err) => res.status(422).json(err))
+		);
+	} else if (type === 'post' && url) {
+		return (
+			axios.post(url, body)
+			.then((response) => res.json(response))
+			.catch((err) => res.status(422).json(err))
+		);
 	}
+	return (
+		res.status(422).json(message)
+	);
 };
 
-module.exports = {
-	handleRequest: handleRequest
-};
+module.exports = { message, handleRequest };
