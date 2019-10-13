@@ -13,8 +13,7 @@ Structure of post request required:
 const message = `Usage: send a post request with json obj: { method: 'get/post/put', url: 'the api address', data: 'any data content to attach' }`;
 
 const handleRequest = (req, res) => {
-	const { method } = req;
-	if (method !== 'POST') {
+	if (req.method !== 'POST') {
 		return (res.status(422).json(message));
 	}
 	const { method, url, data } = req.body;

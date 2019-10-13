@@ -12,4 +12,4 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routes.
-app.all('/', (req, res) => res.json('hello'));
+app.all('/', (req, res) => handleRequest(req, res));
