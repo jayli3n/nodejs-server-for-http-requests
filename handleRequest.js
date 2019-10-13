@@ -6,7 +6,7 @@ Structure of post request required:
 {
 	'method': 'get/post/put',
 	'url': 'some link',
-	'data': 'json payload'
+	'data': 'json payload' (optional)
 }
 */
 

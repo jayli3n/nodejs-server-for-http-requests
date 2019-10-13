@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { handleRequest } = require('./handlers/handleRequest');
+const { handleRequest } = require('./handleRequest');
 
 
 // Initialize express.
