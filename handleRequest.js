@@ -1,6 +1,5 @@
 const axios = require('axios');
 
-
 /*
 Structure of post request required:
 {
