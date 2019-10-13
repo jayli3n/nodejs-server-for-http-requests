@@ -1,7 +1,7 @@
 const express = require('express');
-const cors = require('cors');
 const bodyParser = require('body-parser');
-const { message, handleRequest } = require('./handleRequest');
+const cors = require('cors');
+const { handleRequest } = require('./handlers/handleRequest');
 
 
 // Initialize express.
@@ -12,8 +12,4 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routes.
-app.get('/', (req, res) => res.status(422).json(message));
-app.post('/', (req, res) => handleRequest(req, res));
-
-
-
+app.all('/', (req, res) => handleRequest(req, res));
