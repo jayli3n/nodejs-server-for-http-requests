@@ -6,9 +6,9 @@ A proxy for HTTP requests. Mainly just for avoiding the CORS error during develo
 2. Send a post request with json obj:
 ```
 {
-	type: 'get/post/put',
-	url: 'the api address',
-	payload: 'any payload content to attach in request'
+	method: 'get/post/put etc.',
+	url: 'some link',
+	data: 'json payload' (optional)
 }
 ```
 

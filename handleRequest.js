@@ -3,7 +3,7 @@ const axios = require('axios');
 /*
 Structure of post request required:
 {
-	'method': 'get/post/put',
+	'method': 'get/post/put etc.',
 	'url': 'some link',
 	'data': 'json payload' (optional)
 }
@@ -19,7 +19,7 @@ const handleRequest = (req, res) => {
 	const { method, url, data } = req.body;
 	axios({ method, url, data })
 	.then(response => res.json(response.data))
-	.catch(err => res.status(422).json(err))
+	.catch(err => res.status(422).json(err));
 };
 
 module.exports = { handleRequest };
